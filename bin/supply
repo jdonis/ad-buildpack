@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# This script is executed during the buildpack's supply phase.
+# It should install the necessary dependencies and set up the runtime environment.
+
+# Download and install the libtinfo.so.5 library
+apt-get update
+apt-get install -y libtinfo5
+
+# Set the LD_LIBRARY_PATH environment variable to include the library path
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu
+
+# Create the profile.d script to set the LD_LIBRARY_PATH for future application runs
+echo "export LD_LIBRARY_PATH=\$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu" > $1/.profile.d/libtinfo.sh

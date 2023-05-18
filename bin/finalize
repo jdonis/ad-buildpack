@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# This script is executed during the buildpack's finalize phase.
+# It can be used for additional cleanup or final configuration steps.
